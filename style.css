@@ -1,0 +1,261 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    overflow: hidden;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: lightblue;
+}
+
+.tree {
+    width: 50px;
+    height: 120px;
+    background-color: #8b5a2b;
+    border-radius: 10px; 
+    position: absolute;
+    bottom: 30%;
+    right: 0; 
+    transform-origin: bottom center;
+    animation: treeAnimation 5s linear infinite;
+}
+
+@keyframes treeAnimation {
+    0% {
+        transform: translateX(100vw);
+    }
+    100% {
+        transform: translateX(-120vw);
+    }
+}
+
+
+.tree::before {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-color: #4CAF50; 
+    border-radius: 50%;
+    bottom: 120px;
+    left: 50%; 
+    transform: translateX(-50%); 
+}
+
+
+
+.scene {
+    max-width: 1000px;
+    max-height: 600px;
+}
+
+.bike {
+    position: absolute;
+    left: 5%;
+    bottom: 20%;
+    display:flex;
+    align-items: center;
+    transition: bottom 0.1s;
+}
+
+.wheel {
+    width: 5vw;
+    height: 5vw;
+    border: 0.5vw solid black;
+    border-radius: 50%;
+    position:relative;
+    animation: rotate 0.5s linear infinite;
+}   
+
+.frame{
+    width:16.6vw;
+    height: 0.5vw;
+    background-color: black;
+    position: absolute;
+    z-index: 1;
+    left:2.9vw;
+}
+
+.seat-frame{
+    width:0.5vw;
+    height:5vw;
+    background-color: black;
+    position:absolute;
+    left: 50%;
+    bottom:3vw;
+    transform: rotate(-10deg)
+}
+
+.seat-frame .seat{
+    width:1.5vw;
+    height:0.5vw;
+    background-color:grey;
+    border-top-right-radius: 30px;
+    transform: rotate(10deg)
+}
+
+.handlebar{
+    position: absolute;
+    right:4vw;
+    top: -6.5vw;
+    width:0.5vw;
+    height:10vw;
+    background-color: black;
+    transform: rotate(-20deg)
+}
+
+.handlebar .grip
+{
+    width:1vw;
+    height:0.3vw;
+    background-color:grey;
+}
+
+.wheel::before,
+.wheel::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+}
+
+.wheel::before {
+    width: 0.2vw;
+    height: 5vw;
+    transform-origin: bottom;
+}
+
+.wheel::after {
+    width: 5vw;
+    height: 0.2vw;
+    transform-origin: right;
+}
+
+.front {
+    margin-right: 10vw;
+}
+
+.pedal {
+    width: 3vw; 
+    height: 0.5vw; 
+    background-color: black;
+    position: absolute;
+    bottom: 3vw;
+    left: 10vw; 
+    animation: pedalRotate 1s linear infinite; 
+    z-index:3;
+}
+
+.cart{
+    background-color: orange;
+    color:white;
+    height:4vw;
+    width:6vw;
+    top:-1.2vw;
+    text-align: center;
+    position:absolute;
+    line-height: 4vw; 
+    font-size:1vw;
+}
+
+.pedal::before,
+.pedal::after {
+    content: "";
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pedal::before {
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.pedal::after {
+    transform: translateX(-50%) rotate(-45deg);
+}
+
+.game-over {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    color: red;
+}
+
+.start-button {
+    display: none;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.start-button:hover {
+    background-color: #45a049;
+}
+
+.start-button:active {
+    background-color: #3e8e41;
+}
+
+.distance {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 20px;
+    color: black;
+}
+
+.highScore {
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    font-size:20px;
+    color:black;
+}
+
+.obstacle {
+    position: absolute;
+    bottom: 20%;
+    width: 20px;
+    height: 20px;
+    background-color: grey;
+}
+
+@keyframes backgroundAnimation {
+    from { background-position: 0 0; }
+    to { background-position: 100% 0; }
+}
+
+@keyframes pedalRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
